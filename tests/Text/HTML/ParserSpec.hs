@@ -98,3 +98,6 @@ spec = do
     describe "parseTokens" $ do
       it "works on `<h1>Heading</h1>`" $ do
         parseTokens "<h1>Heading</h1>" `shouldBe` [TagOpen "h1" [], ContentText "Heading", TagClose "h1"]
+
+      it "normalizes `<h1/>` to '<h1></h1>'" $ do
+        parseTokens "<h1/>" `shouldBe` [TagOpen "h1" [], TagClose "h1"]
